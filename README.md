@@ -34,6 +34,11 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+http://giant.gfycat.com/InsignificantEquatorialHarlequinbug.gif
+https://s3.amazonaws.com/uploads.hipchat.com/14477/52355/LkeLmoy5PiLGDDZ/twitter_advanced_1.gif
+
+Note: For some reason, Github does not like any service I've tried to render the preview inline here.
+
 ![Walkthrough](http://giant.gfycat.com/InsignificantEquatorialHarlequinbug.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
