@@ -34,7 +34,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Walkthrough](http://gfycat.com/InsignificantEquatorialHarlequinbug)
+![Walkthrough](http://giant.gfycat.com/InsignificantEquatorialHarlequinbug.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
