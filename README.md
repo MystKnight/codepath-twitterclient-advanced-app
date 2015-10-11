@@ -34,7 +34,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Walkthrough](https://s3.amazonaws.com/uploads.hipchat.com/14477/52355/LkeLmoy5PiLGDDZ/twitter_advanced_1.gif)
+![Walkthrough](http://gfycat.com/InsignificantEquatorialHarlequinbug)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
