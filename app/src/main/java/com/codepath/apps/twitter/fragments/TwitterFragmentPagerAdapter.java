@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.SparseArray;
 
 import com.codepath.apps.twitter.R;
+import com.codepath.apps.twitter.models.User;
 
 /**
  * Created by yahuijin on 9/29/15.
@@ -39,8 +40,7 @@ public class TwitterFragmentPagerAdapter extends android.support.v4.app.Fragment
                 return mentionsFragment;
             }
             case 2: {
-                // Todo: Create a container fragment with child fragments to support real profile view
-                UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance("onionpixel");
+                UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(User.getCurrentUser());
                 this.fragments.put(position, userTimelineFragment);
                 return userTimelineFragment;
             }

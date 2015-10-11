@@ -14,14 +14,23 @@
     <string name="home">Home</string>
     <string name="mentions">Mentions</string>
     <string name="me">Me</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
     <string name="no_internet">Internet Unavailable</string>
     <string name="error_tweet_length">Make sure you are not over the 140 character limit before tweeting.</string>
     <string name="error_tweeting">Failed to Tweet. Please try again later.</string>
     <string name="error_empty_tweet">You must fill out the tweet message before tweeting.</string>
     <string name="fail_favorite">Failed to Favorite. Please try again later.</string>
+    <string name="fail_unfavorite">Failed to Un-favorite. Please try again later.</string>
     <string name="fail_retweet">Failed to Retweet. Please try again later.</string>
     <string name="fail_user_info">Failed to get user information. Please try again later.</string>
+    <string name="fail_search">Failed to search. Please try again later.</string>
     <string name="fail_fetch_timeline">Failed to get your timeline. Please try again later.</string>
     <string name="fail_fetch_usertimeline">Failed to get your own timeline. Please try again later.</string>
+    <string name="fail_fetch_following">Failed to get the people you are following. Please try again later.</string>
+    <string name="fail_fetch_followers">Failed to get followers. Please try again later.</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_follow">FollowActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

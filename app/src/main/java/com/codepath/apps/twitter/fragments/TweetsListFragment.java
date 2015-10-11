@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.codepath.apps.twitter.R;
 import com.codepath.apps.twitter.activities.TweetDetailActivity;
@@ -31,6 +32,7 @@ public class TweetsListFragment extends TweetActionFragment {
     private List<Tweet> tweets;
     private ListView lvTweets;
     private SwipeRefreshLayout swipeContainer;
+    private ProgressBar progressBarFooter;
 
     @Nullable
     @Override
@@ -39,6 +41,13 @@ public class TweetsListFragment extends TweetActionFragment {
 
         // Set up the list view
         this.lvTweets = (ListView)view.findViewById(R.id.lv_tweets);
+
+        // Add progress bar to footer
+        View footer = getLayoutInflater(savedInstanceState).inflate(R.layout.footer_progress, null);
+        this.progressBarFooter = (ProgressBar)footer.findViewById(R.id.pb_footer_loading);
+        this.lvTweets.addFooterView(footer);
+
+        // Set the adapter
         this.lvTweets.setAdapter(this.tweetsAdapter);
 
         // Navigate to the tweet details page
@@ -71,6 +80,18 @@ public class TweetsListFragment extends TweetActionFragment {
         // Attempt to fetch tweets from our offline storage
         this.tweets = new ArrayList<>();
         this.tweetsAdapter = new TweetsAdapter(getActivity(), this.tweets);
+    }
+
+    public void showProgressBar() {
+        if (this.progressBarFooter != null) {
+            this.progressBarFooter.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideProgressBar() {
+        if (this.progressBarFooter != null) {
+            this.progressBarFooter.setVisibility(View.GONE);
+        }
     }
 
     public ListView getTweetListView() {

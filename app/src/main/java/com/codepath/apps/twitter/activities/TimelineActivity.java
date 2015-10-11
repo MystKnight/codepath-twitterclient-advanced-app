@@ -1,5 +1,6 @@
 package com.codepath.apps.twitter.activities;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -98,5 +99,10 @@ public class TimelineActivity extends AppCompatActivity implements TweetDialog.T
 
     private TweetsListFragment getFragment() {
         return (TweetsListFragment)this.fragmentPagerAdapter.getFragment(this.viewPager.getCurrentItem());
+    }
+
+    public void onSearch(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
     }
 }

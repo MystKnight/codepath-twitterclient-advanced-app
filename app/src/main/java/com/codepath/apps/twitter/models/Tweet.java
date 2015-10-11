@@ -109,6 +109,10 @@ public class Tweet extends Model implements Parcelable {
         return new Select().from(Tweet.class).where("type = ?", type).execute();
     }
 
+    public static List<Tweet> getTweetByUser(User user, String type) {
+        return new Select().from(Tweet.class).where("type = ?", type).where("User = ?", user.getUserId()).execute();
+    }
+
     public static void clearTweets() {
         // Delete and clear out tweets
         new Delete().from(Tweet.class).execute();

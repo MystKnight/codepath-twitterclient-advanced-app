@@ -72,7 +72,7 @@ public class TweetDialog extends DialogFragment {
 
         // Setup UI
         TextView tvScreenName = (TextView)view.findViewById(R.id.tv_screen_name);
-        tvScreenName.setText(User.getCurrentUser().getScreenName());
+        tvScreenName.setText(User.getCurrentUser().getDisplayScreenName());
 
         this.tvCharCounter = (TextView)view.findViewById(R.id.tv_char_counter);
         this.etTweet = (EditText)view.findViewById(R.id.et_tweet);
@@ -82,7 +82,7 @@ public class TweetDialog extends DialogFragment {
 
         // Whenever a tweet is passed in, it means we are replying to someone
         if (tweet != null) {
-            etTweet.setText(tweet.getUser().getScreenName() + " ");
+            etTweet.setText(tweet.getUser().getDisplayScreenName() + " ");
             // Calculate character count with the initial screen name
             int counter = calculateCharacterCount(etTweet.getText().toString());
             tvCharCounter.setText(Integer.toString(counter));

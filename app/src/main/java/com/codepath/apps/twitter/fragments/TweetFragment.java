@@ -47,7 +47,7 @@ public class TweetFragment extends TweetActionFragment {
         Button btnRetweet = (Button)view.findViewById(R.id.btn_retweet);
         Button btnFavorite = (Button)view.findViewById(R.id.btn_favorite);
 
-        tvScreenName.setText(tweet.getUser().getScreenName());
+        tvScreenName.setText(tweet.getUser().getDisplayScreenName());
         tvName.setText(tweet.getUser().getName());
         tvMessage.setText(tweet.getText());
         Picasso.with(getActivity()).load(tweet.getUser().getProfileImageUrl()).fit().into(ivAvatar);
@@ -83,7 +83,7 @@ public class TweetFragment extends TweetActionFragment {
         // If the tweet is from the current user then you cannot retweet your own things
         btnRetweet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_retweet, 0, 0, 0);
         btnRetweet.setEnabled(true);
-        if (tweet.getUser().getScreenName().equals("@onionpixel")) {
+        if (tweet.getUser().getDisplayScreenName().equals("@onionpixel")) {
             btnRetweet.setEnabled(false);
             btnRetweet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_retweet_disabled, 0, 0, 0);
         } else if (tweet.getRetweeted()) {

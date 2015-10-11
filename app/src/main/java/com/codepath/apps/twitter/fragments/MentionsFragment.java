@@ -78,9 +78,13 @@ public class MentionsFragment extends TweetsListFragment {
             return;
         }
 
+        this.showProgressBar();
+
         this.client.getMentions(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                hideProgressBar();
+
                 // Got notified that we need to clear up our adapter
                 if (requiresClearingAdapter) {
                     // We've just cleared so let's reset

@@ -58,12 +58,50 @@ public class TweetActionFragment extends Fragment {
         });
     }
 
-    public void favorite(final Tweet tweet, final Button btnFavorite) {
+    public void favorite(Tweet tweet, Button btnFavorite) {
         if (!Utils.isNetworkAvailable(getActivity())) {
             Toast.makeText(getActivity(), getResources().getString(R.string.no_internet), Toast.LENGTH_LONG).show();
             return;
         }
 
+        // Unfavorite
+        if (tweet.getFavorited()) {
+            this.unfavoriteAction(tweet, btnFavorite);
+        }
+        // Favorite
+        else {
+            this.favoriteAction(tweet, btnFavorite);
+        }
+    }
+
+    private void unfavoriteAction(final Tweet tweet, final Button btnFavorite) {
+        // Favorite the item
+        TwitterClient client = TwitterApplication.getRestClient();
+        client.unfavorite(tweet.getTweetId(), new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                tweet.setFavorited(false);
+                btnFavorite.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_favorite, 0, 0, 0);
+
+                // Set the favorite text and icon on favorite
+                String favoriteCountStr = btnFavorite.getText().toString();
+                if (favoriteCountStr == "1") {
+                    btnFavorite.setText("");
+                } else {
+                    int favoriteCount = Integer.parseInt(favoriteCountStr);
+                    favoriteCount--;
+                    btnFavorite.setText(Integer.toString(favoriteCount));
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(getActivity(), getResources().getString(R.string.fail_unfavorite), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void favoriteAction(final Tweet tweet, final Button btnFavorite) {
         // Favorite the item
         TwitterClient client = TwitterApplication.getRestClient();
         client.favorite(tweet.getTweetId(), new AsyncHttpResponseHandler() {

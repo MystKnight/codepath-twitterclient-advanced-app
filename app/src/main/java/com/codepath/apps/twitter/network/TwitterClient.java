@@ -1,11 +1,9 @@
 package com.codepath.apps.twitter.network;
 
 import org.scribe.builder.api.Api;
-import org.scribe.builder.api.FlickrApi;
 import org.scribe.builder.api.TwitterApi;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -76,6 +74,36 @@ public class TwitterClient extends OAuthBaseClient {
 		client.get(apiUrl, params, handler);
 	}
 
+	public void getFollowers(String screenName, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("followers/list.json");
+
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		params.put("screen_name", screenName);
+
+		client.get(apiUrl, params, handler);
+	}
+
+	public void searchTweets(String query, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("search/tweets.json");
+
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		params.put("q", query);
+
+		client.get(apiUrl, params, handler);
+	}
+
+	public void getFollowing(String screenName, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("friends/list.json");
+
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		params.put("screen_name", screenName);
+
+		client.get(apiUrl, params, handler);
+	}
+
 	public void updateStatus(String tweet, AsyncHttpResponseHandler handler) {
 		RequestParams params = new RequestParams();
 		params.put("status", tweet);
@@ -101,6 +129,15 @@ public class TwitterClient extends OAuthBaseClient {
 
 	public void favorite(long tweetId, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("favorites/create.json");
+
+		RequestParams params = new RequestParams();
+		params.put("id", tweetId);
+
+		client.post(apiUrl, params, handler);
+	}
+
+	public void unfavorite(long tweetId, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("favorites/destroy.json");
 
 		RequestParams params = new RequestParams();
 		params.put("id", tweetId);

@@ -1,6 +1,5 @@
 package com.codepath.apps.twitter.activities;
 
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.codepath.apps.twitter.R;
-import com.codepath.apps.twitter.fragments.MentionsFragment;
-import com.codepath.apps.twitter.fragments.TimelineFragment;
 import com.codepath.apps.twitter.fragments.TweetDialog;
 import com.codepath.apps.twitter.fragments.TweetFragment;
 

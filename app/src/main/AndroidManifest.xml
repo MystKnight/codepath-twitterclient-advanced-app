@@ -10,7 +10,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -54,7 +53,20 @@
         </activity>
         <activity
             android:name=".activities.TweetDetailActivity"
-            android:label="@string/title_activity_tweet_detail">
+            android:label="@string/title_activity_tweet_detail" >
+        </activity>
+        <activity
+            android:name=".activities.UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name=".activities.FollowActivity"
+            android:label="@string/title_activity_follow" >
+        </activity>
+        <activity
+            android:parentActivityName=".activities.TimelineActivity"
+            android:name=".activities.SearchActivity"
+            android:label="@string/title_activity_search" >
         </activity>
     </application>
 

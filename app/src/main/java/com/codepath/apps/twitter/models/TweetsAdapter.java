@@ -1,6 +1,7 @@
 package com.codepath.apps.twitter.models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.apps.twitter.R;
-import com.codepath.apps.twitter.network.TwitterApplication;
-import com.codepath.apps.twitter.network.TwitterClient;
-import com.codepath.apps.twitter.utils.Utils;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.codepath.apps.twitter.activities.UserProfileActivity;
 import com.squareup.picasso.Picasso;
-
-import org.apache.http.Header;
 
 import java.util.List;
 
@@ -33,7 +28,6 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
         this.context = context;
     }
 
-    // Todo: ViewHolder pattern
     private static class ViewHolder {
         TextView tvScreenName;
         TextView tvName;
@@ -50,7 +44,7 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Tweet tweet = getItem(position);
+        final Tweet tweet = getItem(position);
 
         ViewHolder viewHolder;
         if (convertView == null) {
@@ -83,11 +77,20 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 
         // Set the avatar of the person tweeting
         viewHolder.ivAvatar.setImageResource(android.R.color.transparent);
+        viewHolder.ivAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Show the user profile page
+                Intent intent = new Intent(context, UserProfileActivity.class);
+                intent.putExtra("user", tweet.getUser());
+                context.startActivity(intent);
+            }
+        });
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(viewHolder.ivAvatar);
 
         // Set text
         viewHolder.tvName.setText(tweet.getUser().getName());
-        viewHolder.tvScreenName.setText(tweet.getUser().getScreenName());
+        viewHolder.tvScreenName.setText(tweet.getUser().getDisplayScreenName());
         viewHolder.tvBody.setText(tweet.getText());
         viewHolder.tvCreateDate.setText(tweet.getSmartDate());
 
@@ -122,7 +125,7 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
         // If the tweet is from the current user then you cannot retweet your own things
         viewHolder.btnRetweet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_retweet, 0, 0, 0);
         viewHolder.btnRetweet.setEnabled(true);
-        if (tweet.getUser().getScreenName().equals("@onionpixel")) {
+        if (tweet.getUser().getDisplayScreenName().equals("@onionpixel")) {
             viewHolder.btnRetweet.setEnabled(false);
             // Force light gray since set enabled sets it to black
             viewHolder.btnRetweet.setTextColor(this.context.getResources().getColor(R.color.light_gray));
